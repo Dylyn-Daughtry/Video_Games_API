@@ -20,9 +20,14 @@ namespace ASP_NET_Video_Games_API.Controllers
         {
             var videoGames = _context.VideoGames.ToList();
 
-            Console.WriteLine(videoGames.Count + "  " + videoGames[0].Name);
 
             return Ok(videoGames);
+        }
+        [HttpGet("{id}")] 
+        public IActionResult GetGameByID(int id)
+        {
+            var videoGame = _context.VideoGames.Where(vg => vg.Id == id).FirstOrDefault();
+            return Ok(videoGame);
         }
 
     }
